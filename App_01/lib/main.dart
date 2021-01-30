@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+=======
+
+>>>>>>> a74d40565b35ace8795150f41b63923d6fbdf1b6
 import 'screens/screen.dart';
 
 void main() {
