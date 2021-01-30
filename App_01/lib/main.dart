@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'screens/screen.dart';
 import 'screens/feature_screen.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
