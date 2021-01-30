@@ -9,6 +9,21 @@ class FeatureScreen extends StatelessWidget {
         title: const Text('Feature Screen'),
         backgroundColor: Colors.red,
       ),
+      body: Column(
+        children: [
+          Container(
+            height: 100,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+            ),
+            child: Image.asset(
+              'assets/images/cat.jpeg',
+              fit: BoxFit.fitWidth,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
