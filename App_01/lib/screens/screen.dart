@@ -34,20 +34,24 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
             ),
-            RaisedButton(
-              onPressed: () {
-                setState(
-                  () {
-                    nameChanger++;
-                    if (nameChanger >= names.length) {
-                      nameChanger = 0;
-                    }
+            Row(
+              children: [
+                RaisedButton(
+                  onPressed: () {
+                    setState(
+                      () {
+                        nameChanger++;
+                        if (nameChanger >= names.length) {
+                          nameChanger = 0;
+                        }
+                      },
+                    );
                   },
-                );
-              },
-              child: const Text('Click'),
-              color: Colors.blueAccent,
-            )
+                  child: const Text('Click'),
+                  color: Colors.blueAccent,
+                ),
+              ],
+            ),
           ],
         ),
       ),
