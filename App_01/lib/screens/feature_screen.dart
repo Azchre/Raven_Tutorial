@@ -17,6 +17,7 @@ class FeatureScreen extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
             ),
+<<<<<<< HEAD
             child: Image.asset('assets/images/Ai.jpg', fit: BoxFit.fitWidth),
           ),
           Container(
@@ -27,6 +28,12 @@ class FeatureScreen extends StatelessWidget {
             ),
             child:
                 Image.asset('assets/images/nakama.png', fit: BoxFit.fitWidth),
+=======
+            child: Image.asset(
+              'assets/images/cat.jpeg',
+              fit: BoxFit.fitWidth,
+            ),
+>>>>>>> 63aa021de2244484993d9889367d9da58fb08b48
           ),
         ],
       ),
