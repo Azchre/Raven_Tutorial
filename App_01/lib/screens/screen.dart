@@ -13,11 +13,27 @@ class _MainScreenState extends State<MainScreen> {
     'Edward',
     'Hyacinth',
   ];
+
+  List lever = [
+    'On',
+    'Off',
+  ];
+
+  List mode = [
+    'Dark mode',
+    'Light mode',
+  ];
+
   int nameChanger = 0;
+
+  int switchLever = 0;
+
+  Color color = Colors.white;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: color,
       appBar: AppBar(
         title: const Text('Raven Tutorial'),
         centerTitle: true,
@@ -61,6 +77,30 @@ class _MainScreenState extends State<MainScreen> {
                 child: const Text('Go To Feature'),
               )
             ],
+          ),
+          RaisedButton(
+            child: Text("Irreversible Dark Mode"),
+            onPressed: () => setState(() => color = Colors.black),
+          ),
+          RaisedButton(
+            onPressed: () {
+              setState(
+                () {
+                  switchLever++;
+                  if (switchLever >= mode.length) {
+                    switchLever = 0;
+                  }
+                },
+              );
+            },
+            child: Text(
+              mode[switchLever],
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 25,
+              ),
+            ),
+            color: Colors.blue[200],
           ),
         ],
       ),
