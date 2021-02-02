@@ -36,11 +36,34 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: color,
       appBar: AppBar(
         title: const Text('Raven Tutorial'),
-        centerTitle: true,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          RaisedButton(
+            child: Text("Irreversible Dark Mode"),
+            onPressed: () => setState(() => color = Colors.black),
+          ),
+          RaisedButton(
+            onPressed: () {
+              setState(
+                () {
+                  switchLever++;
+                  if (switchLever >= mode.length) {
+                    switchLever = 0;
+                  }
+                },
+              );
+            },
+            child: Text(
+              mode[switchLever],
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 25,
+              ),
+            ),
+            color: Colors.blue[200],
+          ),
           Container(
             child: Text(
               names[nameChanger],
@@ -77,30 +100,6 @@ class _MainScreenState extends State<MainScreen> {
                 child: const Text('Go To Feature'),
               )
             ],
-          ),
-          RaisedButton(
-            child: Text("Irreversible Dark Mode"),
-            onPressed: () => setState(() => color = Colors.black),
-          ),
-          RaisedButton(
-            onPressed: () {
-              setState(
-                () {
-                  switchLever++;
-                  if (switchLever >= mode.length) {
-                    switchLever = 0;
-                  }
-                },
-              );
-            },
-            child: Text(
-              mode[switchLever],
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 25,
-              ),
-            ),
-            color: Colors.blue[200],
           ),
         ],
       ),
