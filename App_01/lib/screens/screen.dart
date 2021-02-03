@@ -38,43 +38,47 @@ class _MainScreenState extends State<MainScreen> {
         title: const Text('Raven Tutorial'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          RaisedButton(
-            child: Text("Irreversible Dark Mode"),
-            onPressed: () => setState(() => color = Colors.black),
-          ),
-          RaisedButton(
-            onPressed: () {
-              setState(
-                () {
-                  switchLever++;
-                  if (switchLever >= mode.length) {
-                    switchLever = 0;
-                  }
+          Align(alignment: Alignment.topLeft),
+          Column(
+            children: [
+              Align(alignment: Alignment.topLeft),
+              RaisedButton(
+                child: Text("Irreversible Dark Mode"),
+                onPressed: () => setState(() => color = Colors.black),
+              ),
+              RaisedButton(
+                onPressed: () {
+                  setState(
+                    () {
+                      switchLever++;
+                      if (switchLever >= mode.length) {
+                        switchLever = 0;
+                      }
+                    },
+                  );
                 },
-              );
-            },
-            child: Text(
-              mode[switchLever],
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 25,
+                child: Text(
+                  mode[switchLever],
+                  style: TextStyle(
+                    fontSize: 25,
+                  ),
+                ),
+                color: Colors.blue[200],
               ),
-            ),
-            color: Colors.blue[200],
-          ),
-          Container(
-            child: Text(
-              names[nameChanger],
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 25,
+              Container(
+                child: Text(
+                  names[nameChanger],
+                  style: TextStyle(
+                    fontSize: 25,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               RaisedButton(
                 onPressed: () {
