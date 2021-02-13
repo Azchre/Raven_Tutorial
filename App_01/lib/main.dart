@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'screens/screen.dart';
+import 'screens/main_screen.dart';
+import 'screens/questionAndAnswer_screen.dart';
 import 'screens/feature_screen.dart';
 
 void main() => runApp(MyApp());
@@ -16,7 +17,9 @@ class MyApp extends StatelessWidget {
       ),
       home: MainScreen(),
       routes: {
+        QuestionAndAnswerScreen.routeName: (ctx) => QuestionAndAnswerScreen(),
         FeatureScreen.routeName: (ctx) => FeatureScreen(),
+        MainScreen.routeName: (ctx) => MainScreen(),
       },
     );
   }

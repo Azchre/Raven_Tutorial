@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 
 class FeatureScreen extends StatelessWidget {
   static const routeName = '/feature';
+
+  final List images = [
+    'assets/images/Ai.jpg',
+    'assets/images/nakama.png',
+    'assets/images/cat.jpeg',
+  ];
+
+  int imageShow = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,115 +18,22 @@ class FeatureScreen extends StatelessWidget {
         title: const Text('Feature Screen'),
         backgroundColor: Colors.red,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: Image.asset('assets/images/Ai.jpg', fit: BoxFit.fitWidth),
+      body: ListView.builder(
+        itemCount: images.length * 4,
+        itemBuilder: (context, index) {
+          imageShow++;
+          if (imageShow > images.length) {
+            imageShow = 0;
+          }
+          return Container(
+            height: 100,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
             ),
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child:
-                  Image.asset('assets/images/nakama.png', fit: BoxFit.fitWidth),
-            ),
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child:
-                  Image.asset('assets/images/cat.jpeg', fit: BoxFit.fitWidth),
-            ),
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: Image.asset('assets/images/Ai.jpg', fit: BoxFit.fitWidth),
-            ),
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child:
-                  Image.asset('assets/images/nakama.png', fit: BoxFit.fitWidth),
-            ),
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child:
-                  Image.asset('assets/images/cat.jpeg', fit: BoxFit.fitWidth),
-            ),
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: Image.asset('assets/images/Ai.jpg', fit: BoxFit.fitWidth),
-            ),
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child:
-                  Image.asset('assets/images/nakama.png', fit: BoxFit.fitWidth),
-            ),
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child:
-                  Image.asset('assets/images/cat.jpeg', fit: BoxFit.fitWidth),
-            ),
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: Image.asset('assets/images/Ai.jpg', fit: BoxFit.fitWidth),
-            ),
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child:
-                  Image.asset('assets/images/nakama.png', fit: BoxFit.fitWidth),
-            ),
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child:
-                  Image.asset('assets/images/cat.jpeg', fit: BoxFit.fitWidth),
-            ),
-          ],
-        ),
+            child: Image.asset(images[imageShow], fit: BoxFit.fitWidth),
+          );
+        },
       ),
     );
   }

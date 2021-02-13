@@ -1,8 +1,10 @@
+import 'package:App_01/screens/questionAndAnswer_screen.dart';
 import 'package:flutter/material.dart';
 
-import './feature_screen.dart';
+import 'feature_screen.dart';
 
 class MainScreen extends StatefulWidget {
+  static const routeName = '/main';
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -12,6 +14,11 @@ class _MainScreenState extends State<MainScreen> {
     'Raven',
     'Edward',
     'Hyacinth',
+  ];
+
+  List colorMode = [
+    Colors.black,
+    Colors.white,
   ];
 
   List lever = [
@@ -24,16 +31,19 @@ class _MainScreenState extends State<MainScreen> {
     'Light mode',
   ];
 
+  List screens = [
+    'Feature Screen',
+    'QnA Screen',
+  ];
+
   int nameChanger = 0;
 
-  int switchLever = 0;
-
-  Color color = Colors.white;
+  int switchColor = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: color,
+      backgroundColor: colorMode[switchColor],
       appBar: AppBar(
         title: const Text('Raven Tutorial'),
       ),
@@ -46,22 +56,18 @@ class _MainScreenState extends State<MainScreen> {
           children: [
             //Gi wala nako ang Column sa Mode Buttons
             RaisedButton(
-              child: Text("Irreversible Dark Mode"),
-              onPressed: () => setState(() => color = Colors.black),
-            ),
-            RaisedButton(
               onPressed: () {
                 setState(
                   () {
-                    switchLever++;
-                    if (switchLever >= mode.length) {
-                      switchLever = 0;
+                    switchColor++;
+                    if (switchColor >= colorMode.length) {
+                      switchColor = 0;
                     }
                   },
                 );
               },
               child: Text(
-                mode[switchLever],
+                mode[switchColor],
                 style: TextStyle(
                   fontSize: 25,
                 ),
@@ -69,7 +75,7 @@ class _MainScreenState extends State<MainScreen> {
               color: Colors.blue[200],
             ),
             // A sized box widget gives spacing, yOU CAN DEfiNe height and width
-            const SizedBox(height: 30),
+            const SizedBox(height: 200),
             //Gi balhin nako ang container sa Text Gigawas nko sa duha kay buttons sa modes
             //The Text and the two buttons Click and Go To Feature are inside a Column
             //That Column Contains the Container for the Text and A Row that holds the two buttons.
@@ -79,6 +85,7 @@ class _MainScreenState extends State<MainScreen> {
                   child: Text(
                     names[nameChanger],
                     style: TextStyle(
+                      color: switchColor == 0 ? Colors.white : Colors.black,
                       fontSize: 25,
                     ),
                   ),
@@ -87,30 +94,28 @@ class _MainScreenState extends State<MainScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    RaisedButton(
-                      onPressed: () {
-                        setState(
-                          () {
-                            nameChanger++;
-                            if (nameChanger >= names.length) {
-                              nameChanger = 0;
-                            }
-                          },
-                        );
-                      },
-                      child: const Text('Click'),
-                      color: Colors.blueAccent,
-                    ),
+                    _buildClickButton(onPressed: () {
+                      setState(() {
+                        nameChanger++;
+                        if (nameChanger >= names.length) {
+                          nameChanger = 0;
+                        }
+                      });
+                    }),
                     SizedBox(
                       width: 10,
                     ),
-                    RaisedButton(
-                      onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed(FeatureScreen.routeName);
-                      },
-                      child: const Text('Go To Feature'),
-                    )
+                    _buildButton(
+                        title: 'Feature Screen',
+                        onPressed: () => Navigator.of(context)
+                            .pushNamed(FeatureScreen.routeName)),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    _buildButton(
+                        title: 'Go to QnA',
+                        onPressed: () => Navigator.of(context)
+                            .pushNamed(QuestionAndAnswerScreen.routeName)),
                   ],
                 ),
               ],
@@ -120,6 +125,23 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-}
 
-//raven
+  Widget _buildButton({Function onPressed, String title}) {
+    return Expanded(
+      child: RaisedButton(
+        onPressed: onPressed,
+        child: FittedBox(child: Text(title, textAlign: TextAlign.center)),
+      ),
+    );
+  }
+
+  RaisedButton _buildClickButton({
+    Function onPressed,
+  }) {
+    return RaisedButton(
+      onPressed: onPressed,
+      child: const Text('Click'),
+      color: Colors.blueAccent,
+    );
+  }
+}
